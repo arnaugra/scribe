@@ -1,3 +1,5 @@
+import { validators } from './validators/validators.js';
+
 /**
  * Scribe - Class:
  * Validate data following a set of rules
@@ -18,10 +20,12 @@ export default class Scribe {
             const rulesArray = rules[field];
 
             rulesArray.forEach(rule => {
-                // extract rule name and param (if exists)
-                const [ruleName, param] = rule.split(':');
+                const result = validators[rule](this.data[field]);
                 
-                // call the rule function
+                if (!result) {
+                    if (!this.errors[field]) this.errors[field] = [];
+                    this.errors[field].push(`${field}: ${rule}`);
+                }
             });
         });
     }
