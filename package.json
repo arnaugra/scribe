@@ -4,7 +4,13 @@
   "description": "��#\u0000 \u0000s\u0000c\u0000r\u0000i\u0000b\u0000e\u0000\r\u0000 \u0000",
   "main": "index.js",
   "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
 }
