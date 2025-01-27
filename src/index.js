@@ -20,11 +20,18 @@ export default class Scribe {
             const rulesArray = rules[field];
 
             rulesArray.forEach(rule => {
-                const result = validators[rule](this.data[field]);
+                // extract rule name and param (if exists)
+                const [ruleName, param] = rule.split(':');
                 
-                if (!result) {
-                    if (!this.errors[field]) this.errors[field] = [];
-                    this.errors[field].push(`${field}: ${rule}`);
+                if (validators[ruleName]) {
+                    const result = param
+                        ? validators[ruleName](this.data[field], parseInt(param))
+                        : validators[ruleName](this.data[field]);
+                    
+                    if (!result) {
+                        if (!this.errors[field]) this.errors[field] = [];
+                        this.errors[field].push(`${field}: ${ruleName}`);
+                    }
                 }
             });
         });
