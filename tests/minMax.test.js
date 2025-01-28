@@ -1,11 +1,11 @@
 import { min, max } from '../src/validators/minMax.js';
 
 test('min if value is null', () => {
-    expect(min(null, 2)).toBe(false);
+    expect(min(2, null)).toBe(false);
 });
 
 test('min if value is undefined', () => {
-    expect(min(undefined, 2)).toBe(false);
+    expect(min(2, undefined)).toBe(false);
 });
 
 test('min if value is a number and is less than min', () => {
@@ -37,11 +37,11 @@ test('min if value is a string and is greater than min', () => {
 });
 
 test('max if value is null', () => {
-    expect(max(null, 2)).toBe(false);
+    expect(max(2, null)).toBe(false);
 });
 
 test('max if value is undefined', () => {
-    expect(max(undefined, 2)).toBe(false);
+    expect(max(2, undefined)).toBe(false);
 });
 
 test('max if value is a number and is less than max', () => {
