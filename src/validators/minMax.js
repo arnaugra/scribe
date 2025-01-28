@@ -6,6 +6,7 @@
  * @returns { Boolean } True if the value is less than the limit
  */
 export function max(value, max) {
+    if( min === null || min === undefined) return false;
     if (typeof value === 'number') return value <= max;
     return value.length <= max;
 }
@@ -18,6 +19,7 @@ export function max(value, max) {
  * @returns { Boolean } True if the value is greater than the limit
  */
 export function min(value, min) {
+    if( min === null || min === undefined) return false;
     if (typeof value === 'number') return value >= min;
     return value.length >= min;
 }
