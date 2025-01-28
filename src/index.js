@@ -53,6 +53,10 @@ export default class Scribe {
         return Object.keys(this.#errors).length === 0;
     }
 
+    validated() {
+        return this.#validated;
+    }
+
     getErrors() {
         return this.#errors;
     }
