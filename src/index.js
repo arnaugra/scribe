@@ -25,18 +25,12 @@ export default class Scribe {
             const rulesArray = rules[field];
 
             rulesArray.forEach(rule => {
-                const [ruleName, param1, param2] = rule.split(':');
+                const [ruleName, ...params] = rule.split(':');
 
                 if (validators[ruleName]) {
-                    let result = false;
-                    
-                    if (param1 && param2) {
-                        result = validators[ruleName](this.#data[field], parseInt(param1), parseInt(param2));
-                    } else if (param1) {
-                        result = validators[ruleName](this.#data[field], parseInt(param1));
-                    } else {
-                        result = validators[ruleName](this.#data[field]);
-                    }
+                    const parsedParams = params.map(param => isNaN(param) ? param : parseInt(param));
+
+                    let result = validators[ruleName](this.#data[field], ...parsedParams);
 
                     if (!result) {
                         if (!this.#errors[field]) this.#errors[field] = [];
