@@ -1,11 +1,11 @@
-import { number, integer, float, between  } from './number.js';
+import { number, integer, float, between  } from '../src/validators/number.js';
 
 test('number if value is null', () => {
-    expect(required(null)).toBe(false);
+    expect(number(null)).toBe(false);
 });
 
 test('number if value is undefined', () => {
-    expect(required(undefined)).toBe(false);
+    expect(number(undefined)).toBe(false);
 });
 
 test('number if value is a number', () => {
