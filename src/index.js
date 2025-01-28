@@ -10,9 +10,14 @@ import { validators } from './validators/validators.js';
  * - getErrors(): Get the errors of the validation
  */
 export default class Scribe {
+    #data
+    #validated
+    #errors
+
     constructor(data) {
-        this.data = data;
-        this.errors = {};
+        this.#data = data;
+        this.#validated = {};
+        this.#errors = {};
     }
 
     validate(rules) {
@@ -20,17 +25,24 @@ export default class Scribe {
             const rulesArray = rules[field];
 
             rulesArray.forEach(rule => {
-                // extract rule name and param (if exists)
-                const [ruleName, param] = rule.split(':');
-                
+                const [ruleName, param1, param2] = rule.split(':');
+
                 if (validators[ruleName]) {
-                    const result = param
-                        ? validators[ruleName](this.data[field], parseInt(param))
-                        : validators[ruleName](this.data[field]);
+                    let result = false;
                     
+                    if (param1 && param2) {
+                        result = validators[ruleName](this.#data[field], parseInt(param1), parseInt(param2));
+                    } else if (param1) {
+                        result = validators[ruleName](this.#data[field], parseInt(param1));
+                    } else {
+                        result = validators[ruleName](this.#data[field]);
+                    }
+
                     if (!result) {
-                        if (!this.errors[field]) this.errors[field] = [];
-                        this.errors[field].push(`${field}: ${ruleName}`);
+                        if (!this.#errors[field]) this.#errors[field] = [];
+                        this.#errors[field].push(ruleName);
+                    } else {
+                        if (!this.#validated[field]) this.#validated[field] = this.#data[field];
                     }
                 }
             });
@@ -38,10 +50,10 @@ export default class Scribe {
     }
 
     passes() {
-        return Object.keys(this.errors).length === 0;
+        return Object.keys(this.#errors).length === 0;
     }
 
     getErrors() {
-        return this.errors;
+        return this.#errors;
     }
 }
