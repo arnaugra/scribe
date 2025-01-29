@@ -47,3 +47,7 @@ test('email if is a valid email', () => {
 test('email if is not a valid email', () => {
     expect(email('invalid@email')).toBe(false);
 });
+
+test('email if is not a valid email but can be null', () => {
+    expect(email('', [true])).toBe(true);
+});
