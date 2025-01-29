@@ -8,6 +8,7 @@ import { number, integer, float, between  } from './number.js';
  */
 export const validators = {
     required,
+    nullable,
     string,
     email,
     min,
@@ -16,5 +17,4 @@ export const validators = {
     integer,
     float,
     between,
-    nullable,
 };
