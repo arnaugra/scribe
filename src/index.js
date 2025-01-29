@@ -29,8 +29,8 @@ export default class Scribe {
 
                 if (validators[ruleName]) {
                     const parsedParams = params.map(param => isNaN(param) ? param : parseInt(param));
-
-                    let result = validators[ruleName](this.#data[field], ...parsedParams);
+                    const nullable = rulesArray.includes('nullable');
+                    const result = validators[ruleName](this.#data[field], ...parsedParams, ...nullable ? [nullable] : []);
 
                     if (!result) {
                         if (!this.#errors[field]) this.#errors[field] = [];
