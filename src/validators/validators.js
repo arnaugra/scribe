@@ -1,4 +1,4 @@
-import { required } from './required.js';
+import { required, nullable } from './required.js';
 import { string, email } from './string.js';
 import { min, max } from './minMax.js';
 import { number, integer, float, between  } from './number.js';
@@ -16,4 +16,5 @@ export const validators = {
     integer,
     float,
     between,
+    nullable,
 };
