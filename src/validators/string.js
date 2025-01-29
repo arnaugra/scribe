@@ -3,6 +3,7 @@ import { nullableRule } from "./required";
 /**
  * Verify that value is a string
  * @param { any } value Value to validate
+ * @param {...*} args Nullable value 
  * @returns { Boolean } True if the value is a string
  */
 export function string(value, ...args) {
@@ -14,6 +15,7 @@ export function string(value, ...args) {
 /**
  * Verify that value is an email
  * @param { any } value Value to validate
+ * @param {...*} args Nullable value 
  * @returns { Boolean } True if the value is an email
  */
 export function email(value, ...args) {
