@@ -111,7 +111,7 @@ export function after(value, ...args) {
  * @param { String } end End date to compare
  * @returns { Boolean } True if the value is a date and is between the given dates
  */
-export function between(value, ...args) {
+export function betweenDates(value, ...args) {
     const [start, end, nullable] = args;
     if (nullableRule(value, nullable)) return true;
     return isDate(value) && Date.parse(value) > Date.parse(start) && Date.parse(value) < Date.parse(end);
