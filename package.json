@@ -1,8 +1,8 @@
 {
   "name": "scribe-validator",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "scribe",
-  "main": "index.js",
+  "main": "src/index.js",
   "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
@@ -10,9 +10,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bin": {
-    "scribe-validator": "./src/index.js"
-  },
   "devDependencies": {
     "jest": "^29.7.0"
   }
