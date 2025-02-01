@@ -10,6 +10,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bin": {
+    "scribe-validator": "./src/index.js"
+  },
   "devDependencies": {
     "jest": "^29.7.0"
   }
