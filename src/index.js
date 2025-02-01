@@ -20,6 +20,11 @@ export default class Scribe {
         this.#errors = {};
     }
 
+    /**
+     * Validate the data following the rules given by an object
+     * @param { Object } rules
+     * @returns { void }
+     */
     validate(rules) {
         Object.keys(rules).forEach(field => {
             const rulesArray = rules[field];
@@ -43,14 +48,26 @@ export default class Scribe {
         });
     }
 
+    /**
+     * Verify if the data passes the validation
+     * @returns { boolean }
+     */
     passes() {
         return Object.keys(this.#errors).length === 0;
     }
 
+    /**
+     * Get the validated data
+     * @returns { Object }
+     */
     validated() {
         return this.#validated;
     }
 
+    /**
+     * Get the errors of the validation
+     * @returns { Object }
+     */
     getErrors() {
         return this.#errors;
     }
