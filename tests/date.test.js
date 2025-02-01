@@ -1,4 +1,4 @@
-import { isDate, format, before, after, between, today, tomorrow, yesterday } from '../src/validators/date.js';
+import { isDate, format, before, after, betweenDates, today, tomorrow, yesterday } from '../src/validators/date.js';
 
 describe("Date validation functions", () => {
     test("isDate() should return true for valid dates", () => {
@@ -33,8 +33,8 @@ describe("Date validation functions", () => {
     });
 
     test("between() should return true if the date is within the range", () => {
-        expect(between("2025-01-31", "2025-01-01", "2025-12-31")).toBe(true);
-        expect(between("2024-12-31", "2025-01-01", "2025-12-31")).toBe(false);
+        expect(betweenDates("2025-01-31", "2025-01-01", "2025-12-31")).toBe(true);
+        expect(betweenDates("2024-12-31", "2025-01-01", "2025-12-31")).toBe(false);
     });
 
     test("today() should return true for the current date", () => {
